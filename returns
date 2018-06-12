@@ -1,0 +1,41 @@
+#write a function that receives 2 integers. returns true if those are equal, returns false if those are different
+
+#List at least 5 non-trivial test cases, they have to be positive and negative.
+	
+	
+	
+N1 = input("Enter the first number: ")
+N2 = input("Enter the second number: ")
+#comparing two integers
+if N1 == N2:
+  print "true"
+else:
+  print "false"
+  
+  
+  
+
+test cases
+
+
+  Enter the first number: 2
+Enter the second number: 3
+false
+
+
+Enter the first number: -1
+Enter the second number: 1
+false
+
+Enter the first number: -1
+Enter the second number: 2
+false
+  
+  Enter the first number: 1
+Enter the second number: -1
+false
+
+Enter the first number: 2
+Enter the second number: 2
+ture
+
