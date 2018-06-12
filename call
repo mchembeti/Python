@@ -1,0 +1,20 @@
+# write a program that makes a call to this rest service,
+
+http://services.groupkt.com/country/get/all
+
+Return a sorted list of countries that contain a given string either in name or in code.
+
+
+import requests
+
+import json
+
+url = 'http://services.groupkt.com/country/get/all'
+
+response = requests.get(url)
+print(responce.text)
+
+req.json()
+
+
+
