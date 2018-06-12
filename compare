@@ -1,0 +1,21 @@
+#Compare the two values
+def compare(x,y):
+    if x == y:
+        print("Input integers are equal!")
+        return True
+    else:
+        print("Not equal!")
+        return False
+
+while(1):
+    try:
+        x = int(input("enter 1st integer ="))
+        y = int(input("enter 2nd integer ="))
+    except ValueError:
+        print("One or both inputs are not valid integers. Please enter valid integers again:")
+        continue
+    break
+
+compare(x,y)
+
+#test cases --> 100,100; 121,123; 12.5,13.5; ch, fgh; ch, ch;
