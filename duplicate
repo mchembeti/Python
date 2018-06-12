@@ -1,0 +1,51 @@
+# program to find duplicate files, i.e. with same content even when their name/extension is different.
+import os
+import hashlib
+import sys
+
+def hashfile(path, blocksize = 65536):
+	afile = open(path, 'rb')
+	hasher = hashlib.md5()
+	buf = afile.read(blocksize)
+	while len(buf) > 0:
+		hasher.update(buf)
+		buf = afile.read(blocksize)
+	afile.close()
+	return hasher.hexdigest()
+
+def findDuplicates(folderPath):
+	duplicates = {}
+	match = {'matches': []}
+	f = []
+	for (dirpath, dirnames, filenames) in os.walk(folderPath):
+		f.extend(filenames)
+		#print(filenames)
+		for each_file in filenames:
+			filePath = os.path.join(folderPath, each_file)
+			#print(filePath)
+			file_hash = hashfile(filePath)
+			#print(file_hash)
+			if file_hash in duplicates:
+				duplicates[file_hash].append(each_file)
+			else:
+				duplicates[file_hash] = [each_file]
+		break
+	for values in duplicates.values():
+		if len(values)>1:
+			#print(values)
+			match['matches'].append(values)
+	print(match)
+	#print(duplicates.values())
+		
+	return duplicates
+	
+
+if __name__ == '__main__':
+	folderPath = input("Please enter the full folder path:")
+	if os.path.exists(folderPath):
+		print ('\n scanning through the files.... \n \n')
+		print ('matched files are:\n')
+		match = findDuplicates(folderPath)
+	else:
+		print('%s is not a valid path, please verify the path %s', folderPath)
+		sys.exit()
